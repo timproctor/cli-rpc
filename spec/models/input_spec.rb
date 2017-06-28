@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe "User input" do
-  it "must be in the form of a string" do
+describe "Input" do
+  it "must be in the form of an integer" do
     byebug
   end
 end
