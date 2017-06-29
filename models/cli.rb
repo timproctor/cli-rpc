@@ -1,5 +1,4 @@
-class RpcIO
-  require_relative './models/rpc_io.rb'
+class CLI
   attr_accessor :input, :output
 
   def initialize
@@ -9,8 +8,8 @@ class RpcIO
   end
 
   def write_input
-    IO.write('rpc_io' input.push(@input))
+    IO.write('./db/rpc_stack.rb', stack)
   end
 
-  
+
 end
