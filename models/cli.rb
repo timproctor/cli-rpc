@@ -4,7 +4,7 @@ class CLI
   def self.run
     puts "Reverse Polish Calculator is On"
     puts "Please enter an integer:"
-    entry = gets
+    entry = gets.chomp
     io = InOut.new(entry)
     io.confirm_message
     puts "Goodbye."
