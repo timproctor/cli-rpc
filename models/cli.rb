@@ -3,7 +3,6 @@ class CLI
     puts "Reverse Polish Calculator is On"
     puts "Please enter an integer:"
     entry = gets
-    
     print "Your number was "
     puts entry
     puts "Goodbye."
