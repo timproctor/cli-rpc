@@ -1,10 +1,12 @@
+require_relative '../models/in_out.rb'
+
 class CLI
   def self.run
     puts "Reverse Polish Calculator is On"
     puts "Please enter an integer:"
     entry = gets
-    print "Your number was "
-    puts entry
+    io = InOut.new(entry)
+    io.confirm_message
     puts "Goodbye."
   end
 
