@@ -5,8 +5,8 @@ class CLI
     puts "Reverse Polish Calculator is On"
     puts "Please enter an integer:"
     entry = gets.chomp
-    io = InOut.new(entry)
-    io.confirm_message
+    input = InOut.write(entry)
+    
     puts "Goodbye."
   end
 
