@@ -6,7 +6,8 @@ class CLI
     puts "Please enter an integer:"
     entry = gets.chomp
     input = InOut.write(entry)
-    
+    output = InOut.read
+    puts "You type #{output}. "
     puts "Goodbye."
   end
 
