@@ -7,7 +7,9 @@ class InOut
   end
 
   def self.read
-    File.read("session_data")
+    read = File.read("session_data")
+
+    
   end
 
 end
