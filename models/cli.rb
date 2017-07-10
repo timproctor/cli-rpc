@@ -5,9 +5,9 @@ class CLI
     puts "Reverse Polish Calculator is On"
     puts "Please enter an integer:"
     entry = gets.chomp
-    input = InOut.write(entry)
+    input = InOut.evaluate(entry)
     output = InOut.read
-    puts "You type #{output}. "
+    puts "You typed #{output}. "
     puts "Goodbye."
   end
 
