@@ -13,6 +13,7 @@ class Sanitizer
 
   def clean
     strip_spaces_off
+    detect_non_numbers
     send_to_file
   end
 
