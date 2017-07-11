@@ -9,6 +9,7 @@ class CLI
     output = InOut.read
     puts "You typed #{output}. "
     puts "Goodbye."
+    InOut.clear
   end
 
   # def self.write_input(input)
