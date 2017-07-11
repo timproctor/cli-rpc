@@ -13,7 +13,18 @@ class Sanitizer
 
   def clean
     strip_spaces_off
+    quit if has_quit?
     send_to_file
+  end
+
+  def has_quit?
+    @input == 'quit'
+    @input == 'q'
+  end
+
+  def quit
+    puts "Goodbye."
+    InOut.clear
   end
 
   def send_to_file
