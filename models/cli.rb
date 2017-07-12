@@ -4,10 +4,15 @@ class CLI
   def self.run
     puts "Reverse Polish Calculator is On"
     puts "Please enter an integer:"
-    entry = gets.chomp
-    input = InOut.evaluate(entry)
-    output = InOut.read
-    puts "You typed #{output}. "
+    i = 0
+    while i < 5
+      i += 1
+      puts i
+      entry = gets.chomp
+      input = InOut.evaluate(entry)
+      output = InOut.read
+      puts "You typed #{output}. "
+    end
     puts "Goodbye."
     InOut.clear
   end

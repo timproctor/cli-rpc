@@ -23,8 +23,7 @@ class Sanitizer
   end
 
   def quit
-    puts "Goodbye."
-    InOut.clear
+    puts "quit method ran"
   end
 
   def send_to_file
