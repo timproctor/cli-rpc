@@ -13,17 +13,12 @@ class Sanitizer
 
   def clean
     strip_spaces_off
-    quit if has_quit?
+    return false if has_quit?
     send_to_file
   end
 
   def has_quit?
-    @input == 'quit'
-    @input == 'q'
-  end
-
-  def quit
-    puts "quit method ran"
+    @input == 'q' || @input == 'quit'
   end
 
   def send_to_file

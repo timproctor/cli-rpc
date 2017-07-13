@@ -14,7 +14,7 @@ class InOut
 
   def self.evaluate(input)
     sanitizer = Sanitizer.new(input)
-    sanitizer.clean
+    return false if sanitizer.clean == false
   end
 
   def self.clear
