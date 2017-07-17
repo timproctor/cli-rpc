@@ -19,7 +19,8 @@ class Sanitizer
   end
 
   def no_letters_please
-
+    letters = ('a-zA-Z').to_a
+    return false if letters.include?(@input)
   end
 
   def has_quit?
