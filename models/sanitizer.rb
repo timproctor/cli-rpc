@@ -19,12 +19,11 @@ class Sanitizer
   end
 
   def downcase_the_input
-
+    @input = @input.downcase
+    puts "from downcae_the_input #{@input}"
   end
 
   def no_letters_please
-    letters = ('a-zA-Z').to_a
-    return false if letters.include?(@input)
   end
 
   def has_quit?
