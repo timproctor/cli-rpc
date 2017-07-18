@@ -14,8 +14,12 @@ class Sanitizer
   def clean
     strip_spaces_off
     return false if has_quit?
-    no_letters_please
+    downcase_the_input
     send_to_file
+  end
+
+  def downcase_the_input
+
   end
 
   def no_letters_please
