@@ -2,10 +2,15 @@ require 'byebug'
 require_relative 'sanitizer'
 
 class InOut
+
+  STORAGE = []
   def self.write(input="")
-    file = File.open("session_data", 'w+') do |f|
-      f.write(input)
-    end
+    file = File.open("session_data", 'a+') do |f|
+              STORAGE << f.write(input)
+            end
+    byebug
+    STORAGE 
+
   end
 
   def self.read
@@ -18,7 +23,7 @@ class InOut
   end
 
   def self.clear
-    write()
+    byebug
   end
 
 end
