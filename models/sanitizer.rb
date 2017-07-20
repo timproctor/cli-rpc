@@ -15,22 +15,24 @@ class Sanitizer
     strip_spaces_off
     return false if has_quit?
     downcase_the_input
-    no_letters_please
-    send_to_file
+    unless letters_present
+      send_to_file
+    end
   end
 
   def downcase_the_input
     @input = @input.downcase
   end
 
-  def no_letters_please
+  def letters_present
     alphabet = ('a'..'z').to_a
 
     alphabet.any? do |letter|
       @input.include?(letter)
+      @input = ""
+      puts "RPC accepts only integers at this time. Please enter again: "
     end
 
-    puts "RPC accepts only integers at this time. Please enter again: "
   end
 
   def has_quit?

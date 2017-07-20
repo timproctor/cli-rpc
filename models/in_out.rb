@@ -3,13 +3,10 @@ require_relative 'sanitizer'
 
 class InOut
 
-  STORAGE = []
-  def self.write(input="")
+  def self.write_to_file(input="")
     file = File.open("session_data", 'a+') do |f|
-              STORAGE << f.write(input)
+              f.write(" #{input}")
             end
-    byebug
-    STORAGE 
 
   end
 
@@ -23,7 +20,7 @@ class InOut
   end
 
   def self.clear
-    byebug
+    write_to_file()
   end
 
 end
