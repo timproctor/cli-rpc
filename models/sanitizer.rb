@@ -28,9 +28,10 @@ class Sanitizer
     alphabet = ('a'..'z').to_a
 
     alphabet.any? do |letter|
-      @input.include?(letter)
-      @input = ""
-      puts "RPC accepts only integers at this time. Please enter again: "
+      if @input.include?(letter)
+        @input = ""
+        puts "RPC accepts only integers at this time. Please enter again: "
+      end
     end
 
   end
@@ -40,6 +41,6 @@ class Sanitizer
   end
 
   def send_to_file
-    InOut.write(@input)
+    InOut.write_to_file(@input)
   end
 end

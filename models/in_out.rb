@@ -20,7 +20,7 @@ class InOut
   end
 
   def self.clear
-    write_to_file()
+    File.truncate("session_data", 0)
   end
 
 end
