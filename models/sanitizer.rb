@@ -25,15 +25,12 @@ class Sanitizer
   end
 
   def letters_present
-    alphabet = ('a'..'z').to_a
-
-    alphabet.any? do |letter|
+    ("a".upto "z").any? do |letter|
       if @input.include?(letter)
         @input = ""
         puts "RPC accepts only integers at this time. Please enter again: "
       end
     end
-
   end
 
   def has_quit?
