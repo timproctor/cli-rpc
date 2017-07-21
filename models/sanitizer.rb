@@ -15,7 +15,7 @@ class Sanitizer
     strip_spaces_off
     return false if has_quit?
     downcase_the_input
-    unless letters_present
+    unless letters_present || non_integers_present
       send_to_file
     end
   end
@@ -31,6 +31,10 @@ class Sanitizer
         puts "RPC accepts only integers at this time. Please enter again: "
       end
     end
+  end
+
+  def non_integers_present
+    byebug
   end
 
   def has_quit?
