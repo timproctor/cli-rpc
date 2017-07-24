@@ -15,7 +15,11 @@ class Sanitizer
     strip_spaces_off
     return false if has_quit?
     downcase_the_input
-    unless letters_present || non_integers_present
+
+    case @input
+    when letters_present
+    when non_integers_present
+    else
       send_to_file
     end
   end
@@ -34,7 +38,14 @@ class Sanitizer
   end
 
   def non_integers_present
-    byebug
+    pattern = %w(! @ # $ % ^ & ( ) _ ` ~ [ ] { } \ | : " ; ' , / ? > < )
+    pattern.any? do |symbol|
+      if @input.include?(symbol)
+        @input = ""
+        puts "RPC accepts only integers at this time. Please enter again: "
+      end
+    end
+
   end
 
   def has_quit?
