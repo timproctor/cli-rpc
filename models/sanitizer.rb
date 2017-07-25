@@ -29,11 +29,11 @@ class Sanitizer
   end
 
   def rewrite_to_file
-    arrayed_store.each { |number| InOut.write_to_files(number.to_s) }
+    arrayed_store.each { |number| InOut.write_to_file(number.to_s) }
   end
 
   def operator_can_opperate
-    operate if arrayed_store.size == 2
+    operate if arrayed_store.size >= 2
   end
 
   def operate
@@ -43,7 +43,7 @@ class Sanitizer
     case @input
     when "+"
       @input = operand_l + operand_r
-      2.times{ arrayed_store.delete_at(-1) }
+      arrayed_store = arrayed_store.pop(2)
       rewrite_to_file
     else
     end
