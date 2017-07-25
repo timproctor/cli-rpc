@@ -19,9 +19,15 @@ class Sanitizer
     case @input
     when letters_present
     when non_integers_present
+    when operator_before_operand
+    when operator_can_opperate
     else
       send_to_file
     end
+  end
+
+  def operator_can_opperate
+    
   end
 
   def downcase_the_input
@@ -47,10 +53,22 @@ class Sanitizer
     end
   end
 
-  def no_operators_before_operands
+  def operator_before_operand
     operators = %W(+ - * %)
-    
+
+    operators.any? do |operator|
+      if @input.include?(operator)
+        arrayed_store = (InOut.read).split(" ")
+        minimum_store = arrayed_store[0,2]
+        if minimum_store.size == 1
+          @input = ""
+          puts "Sorry, we need at least another number: "
+        end
+      end
+    end
   end
+
+
 
   def has_quit?
     @input == 'q' || @input == 'quit'
