@@ -17,8 +17,7 @@ class Sanitizer
     case @input
     when letters_present
     when non_integers_present
-    when operator_before_operand
-    when operator_can_opperate
+    when operators_present
     else
       send_to_file
     end
@@ -33,13 +32,13 @@ class Sanitizer
   end
 
   def operator_can_opperate
-    operate if arrayed_store.size >= 2
+    operate if arrayed_store.size
   end
 
   def operate
     operand_l = arrayed_store[-2].to_f
     operand_r = arrayed_store[-1].to_f
-
+    byebug
     case @input
     when "+"
       @input = operand_l + operand_r
@@ -49,12 +48,14 @@ class Sanitizer
     end
   end
 
-  def operator_before_operand
+  def operators_present
     OPERATORS.any? do |operator|
       if @input.include?(operator)
-        if arrayed_store.size == 1
+        if arrayed_store.size <= 1
           @input = ""
           puts "Sorry, we need at least another number: "
+        elsif arrayed_store.size >= 2
+          operate
         end
       end
     end
