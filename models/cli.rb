@@ -10,7 +10,8 @@ class CLI
       rpn = InOut.evaluate(entry)
       unless rpn == false
         output = InOut.read
-        puts "You typed #{output}. "
+        puts "RPC STACK: #{output} "
+        puts "evaluation"
       end
     end
     puts "Goodbye."
