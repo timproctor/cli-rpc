@@ -1,8 +1,8 @@
 require_relative 'in_out'
 
 class Sanitizer
-  OPERATORS = %W(+ - * %)
-  attr_accessor :input, :arrayed_store
+  OPERATORS = %W(+ - * /)
+  attr_accessor :input
 
   def initialize(input)
     @input = input
@@ -28,22 +28,32 @@ class Sanitizer
   end
 
   def rewrite_to_file
-    arrayed_store.each { |number| InOut.write_to_file(number.to_s) }
+    InOut.clear
+    @arrayed_store.each { |number| InOut.write_to_file(number.to_s) }
   end
 
-  def operator_can_opperate
-    operate if arrayed_store.size
+  def recalculate_stack
+    @arrayed_store.pop(2)
+    rewrite_to_file
   end
 
   def operate
-    operand_l = arrayed_store[-2].to_f
-    operand_r = arrayed_store[-1].to_f
-    byebug
+    operand_l = @arrayed_store[-2].to_f
+    operand_r = @arrayed_store[-1].to_f
+
     case @input
     when "+"
       @input = operand_l + operand_r
-      arrayed_store = arrayed_store.pop(2)
-      rewrite_to_file
+      recalculate_stack
+    when "-"
+      @input = operand_l - operand_r
+      recalculate_stack
+    when "/"
+      @input = operand_l / operand_r
+      recalculate_stack
+    when "*"
+      @input = operand_l * operand_r
+      recalculate_stack
     else
     end
   end
@@ -51,10 +61,10 @@ class Sanitizer
   def operators_present
     OPERATORS.any? do |operator|
       if @input.include?(operator)
-        if arrayed_store.size <= 1
+        if @arrayed_store.size <= 1
           @input = ""
           puts "Sorry, we need at least another number: "
-        elsif arrayed_store.size >= 2
+        elsif @arrayed_store.size >= 2
           operate
         end
       end
@@ -62,7 +72,7 @@ class Sanitizer
   end
 
   def non_integers_present
-    pattern = %w(! @ # $ % ^ & ( ) _ ` ~ [ ] { } \ | : " ; ' , / ? > < =)
+    pattern = %w(! @ # $ % ^ & ( ) _ ` ~ [ ] { } \ | : " ; ' , ? > < =)
     pattern.any? do |symbol|
       if @input.include?(symbol)
         @input = ""
