@@ -2,7 +2,7 @@ require_relative '../models/in_out.rb'
 
 class CLI
   def self.run
-    puts "RPC is ON, operators are +, -, *, or /"
+    puts "RPC is ON, operators are +, -, *, or /. Type q or quit to exit."
     puts "Please enter a number: "
     rpn = nil
     while rpn == nil
