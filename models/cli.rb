@@ -18,4 +18,4 @@ class CLI
   end
 end
 
-CLI.run
+# CLI.run
